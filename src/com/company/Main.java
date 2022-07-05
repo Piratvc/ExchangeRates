@@ -15,13 +15,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         while (true) {
-            Thread.sleep((long) (1200 + Math.random()*100));
+            Thread.sleep((long) (1200 + Math.random() * 100));
             float a = curse("https://www.bestchange.ru/sberbank-to-usd-coin-trc20.html");
             float b = curse("https://www.bestchange.ru/usd-coin-trc20-to-sberbank.html");
 
-            System.out.println(round((a-b)*100/a) + " %");
+            System.out.println(round((a - b) * 100 / a) + " %");
         }
     }
+
     static float curse(String urlCurseBestchange) throws IOException {
         URL url = new URL(urlCurseBestchange);
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -34,7 +35,8 @@ public class Main {
                 Matcher matcher = pat.matcher(inputLine);
                 while (matcher.find()) {
                     curse = Float.parseFloat(matcher.group());
-                };
+                }
+                ;
                 System.out.println("Курс обмена = " + curse);
             }
         }
